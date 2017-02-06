@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: VtTuS6qPPo8szDg/xBboMe8mAxxPdJXwOolDeRoi98J+oNldYQ+Z4UFNVKUu79gsGb0mj4oAIv4nmKZR+lLjavnqSv7dvugU54PrXI903mfFYpAyc3QCr4BEnQ9qB6lUlRi4A6sln93yRnKX2BCIH32QSA/9SHWMMaFpKqxQyY3J3Xb+3P/Z/jjDVWczNuv8urd97rBzQBZnfyTICIEGF3+sPzTQDCJhPs9Wl78b0HEOrp3V6saqTmS6PC1Ezy3xIpju+YlRA6nnIIH/HAhfzwdAVfX30eQDt+5lRpGtPrAek68n1ndJItUTeydVEbJUPNVY4inkFDZjznj01z1E84BaxegZgJ0LeEX+4GtCCTu9vNIdHxvvZ8TWafHkt2kpaZBa70fbYNuxvOWBAcVC8xtjtCarigpJurD0hrBcLSrLCGMi6kgYPK8YJHXi+y3n73Nwjnb8ZTf+oQZbcx5e7uWJFsh2Av+jqXWRuI9jwBQV8ZlX0tFgqbr3F7PApj1iFHoG/WIyrZxraj3pQ2kYMLB5uEmIcGODPAx06qzBl39rRcDdYWHRTsVVakIyrBF5kKShe6P5x8EQKK5Z+zewP8BgvbuRd6ZkHz+8PIzZ+6J5eEtdzDyhmmMmRdUac3/19zHZBHudhwPMNu8Pyy4L1rFq6WtF/1V2sFYOMqk8GUQ=
+  app: boiling-savannah-49630
+  on:
+    repo: teachme10code/node-shopping-list-integration-tests
