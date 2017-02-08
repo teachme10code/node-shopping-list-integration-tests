@@ -4,8 +4,7 @@ const morgan = require('morgan');
 
 const app = express();
 
-const shoppingListRouter = require('./shoppingListRouter');
-const recipesRouter = require('./recipesRouter');
+const {shoppingListRouter, recipesRouter} = require('./routes');
 
 // log the http layer
 app.use(morgan('common'));
@@ -28,7 +27,7 @@ app.use('/recipes', recipesRouter);
 // In our test code, we need a way of asynchrnously starting
 // our server, since we'll be dealing with promises there.
 function runServer() {
-  const port = process.env.PORT || 8080;
+  const port = process.env.PORT || 8081;
   return new Promise((resolve, reject) => {
     app.listen(port, () => {
       console.log(`Your app is listening on port ${port}`);
@@ -46,7 +45,7 @@ function runServer() {
 let server;
 
 function runServer() {
-  const port = process.env.PORT || 8080;
+  const port = process.env.PORT || 8081;
   return new Promise((resolve, reject) => {
     server = app.listen(port, () => {
       console.log(`Your app is listening on port ${port}`);

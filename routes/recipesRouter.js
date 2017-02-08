@@ -1,11 +1,11 @@
 const express = require('express');
-const router = express.Router();
+const recipesRouter = express.Router();
 
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
 
-const {Recipes} = require('./models');
+const {Recipes} = require('../models');
 
 // we're going to add some recipes to Recipes
 // so there's some data to look at
@@ -16,7 +16,7 @@ Recipes.create(
 
 // send back JSON representation of all recipes
 // on GET requests to root
-router.get('/', (req, res) => {
+recipesRouter.get('/', (req, res) => {
   res.json(Recipes.get());
 });
 
@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 // when new recipe added, ensure has required fields. if not,
 // log error and return 400 status code with hepful message.
 // if okay, add new item, and return it with a status 201.
-router.post('/', jsonParser, (req, res) => {
+recipesRouter.post('/', jsonParser, (req, res) => {
   // ensure `name` and `budget` are in request body
   const requiredFields = ['name', 'ingredients'];
   for (let i=0; i<requiredFields.length; i++) {
@@ -40,7 +40,7 @@ router.post('/', jsonParser, (req, res) => {
 });
 
 // Delete recipes (by id)!
-router.delete('/:id', (req, res) => {
+recipesRouter.delete('/:id', (req, res) => {
   Recipes.delete(req.params.id);
   console.log(`Deleted shopping list item \`${req.params.ID}\``);
   res.status(204).end();
@@ -51,7 +51,7 @@ router.delete('/:id', (req, res) => {
 // recipe id in updated item object match. if problems with any
 // of that, log error and send back status code 400. otherwise
 // call `Recipes.updateItem` with updated recipe.
-router.put('/:id', jsonParser, (req, res) => {
+recipesRouter.put('/:id', jsonParser, (req, res) => {
   const requiredFields = ['name', 'ingredients', 'id'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
@@ -77,4 +77,4 @@ router.put('/:id', jsonParser, (req, res) => {
   res.json(updatedItem);
 })
 
-module.exports = router;
+module.exports = {recipesRouter};
